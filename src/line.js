@@ -1,13 +1,11 @@
 class Line {
-  constructor(a, b, c, d) {
-    this.x1 = a;
-    this.y1 = b;
-    this.x2 = c;
-    this.y2 = d;
+  constructor(x1, y1, x2, y2) {
+    this.endA = { x: x1, y: y1 };
+    this.endB = { x: x2, y: y2 };
   }
   toString() {
-    return `Line {x1:${this.x1},y1:${this.y1},x2:${this.x2},y2:${this.y2}}`;
+    return `Line (${this.endA.x},${this.endA.y}) (${this.endB.x},${this.endB.y})`;
   }
 }
 
-exports.Line = Line;
+module.exports = Line;
