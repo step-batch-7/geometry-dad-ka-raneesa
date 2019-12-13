@@ -46,8 +46,14 @@ describe("Line", function() {
       assert.strictEqual(actual, 0);
     });
 
-    it("Should give the length of the line of different points", function() {
-      const line = new Line({ x: 1, y: 2 }, { x: 5, y: 5 });
+    it("Should give the length of the line of different positive points", function() {
+      const line = new Line({ x: 1, y: 2 }, { x: 4, y: 5 });
+      const actual = line.length;
+      assert.isAtLeast(actual, 4.24);
+    });
+
+    it("Should give the length of the line of different negative points", function() {
+      const line = new Line({ x: 5, y: 5 }, { x: 1, y: 2 });
       const actual = line.length;
       assert.strictEqual(actual, 5);
     });
