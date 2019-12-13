@@ -1,3 +1,5 @@
+"use strict";
+
 const Line = require("../src/line.js");
 const assert = require("chai").assert;
 

@@ -1,3 +1,5 @@
+"use strict";
+
 const arePointsEqual = function(a, b) {
   const areXsEqual = a.x == b.x;
   const areYsEqual = a.y == b.y;
