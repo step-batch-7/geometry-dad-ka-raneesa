@@ -38,9 +38,10 @@ class Line {
     return dy / dx;
   }
 
-  isParallelTo(otherLine) {
+  isParallelTo(other) {
+    if (!(other instanceof Line)) return false;
     const slopeOfFirst = this.slope;
-    const slopeOfSecond = otherLine.slope;
+    const slopeOfSecond = other.slope;
     return slopeOfFirst == slopeOfSecond;
   }
 }
