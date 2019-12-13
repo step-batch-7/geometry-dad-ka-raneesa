@@ -73,6 +73,13 @@ describe("Line", function() {
   });
 
   describe("isParallelTo", function() {
+    it("Should validate if two lines has same points", function() {
+      const line1 = new Line({ x: 5, y: 5 }, { x: 1, y: 2 });
+      const line2 = new Line({ x: 5, y: 5 }, { x: 1, y: 2 });
+      const actual = line1.isParallelTo(line2);
+      assert.strictEqual(actual, false);
+    });
+
     it("Should validate if two lines has positive points are parallel", function() {
       const line1 = new Line({ x: 5, y: 5 }, { x: 1, y: 2 });
       const line2 = new Line({ x: 6, y: 6 }, { x: 2, y: 3 });

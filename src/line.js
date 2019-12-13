@@ -39,7 +39,7 @@ class Line {
   }
 
   isParallelTo(other) {
-    if (!(other instanceof Line)) return false;
+    if (!(other instanceof Line) || this.isEqualTo(other)) return false;
     const slopeOfFirst = this.slope;
     const slopeOfSecond = other.slope;
     return slopeOfFirst == slopeOfSecond;
