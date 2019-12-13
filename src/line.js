@@ -1,5 +1,7 @@
 const arePointsEqual = function(a, b) {
-  return a.x == b.x && a.y == b.y;
+  const areXsEqual = a.x == b.x;
+  const areYsEqual = a.y == b.y;
+  return areXsEqual && areYsEqual;
 };
 
 class Line {

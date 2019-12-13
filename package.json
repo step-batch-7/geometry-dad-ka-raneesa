@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/step-batch-7/geometry-dad-ka-raneesa/issues"
   },
-  "homepage": "https://github.com/step-batch-7/geometry-dad-ka-raneesa#readme"
+  "homepage": "https://github.com/step-batch-7/geometry-dad-ka-raneesa#readme",
+  "devDependencies": {
+    "chai": "^4.2.0"
+  }
 }
