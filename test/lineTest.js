@@ -49,13 +49,26 @@ describe("Line", function() {
     it("Should give the length of the line of different positive points", function() {
       const line = new Line({ x: 1, y: 2 }, { x: 4, y: 5 });
       const actual = line.length;
-      assert.isAtLeast(actual, 4.24);
+      assert.approximately(actual, 4.24, 4.25);
     });
 
     it("Should give the length of the line of different negative points", function() {
       const line = new Line({ x: 5, y: 5 }, { x: 1, y: 2 });
       const actual = line.length;
       assert.strictEqual(actual, 5);
+    });
+  });
+
+  describe("slope", function() {
+    it("Should give slope of line has positive points ", function() {
+      const line1 = new Line({ x: 5, y: 5 }, { x: 1, y: 2 });
+      const actual = line1.slope;
+      assert.approximately(actual, -0.7, 0.5);
+    });
+    it("Should give slope of line has positive points ", function() {
+      const line1 = new Line({ x: -3, y: -4 }, { x: -1, y: -2 });
+      const actual = line1.slope;
+      assert.approximately(actual, -1, 0.5);
     });
   });
 });
