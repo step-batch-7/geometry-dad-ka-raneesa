@@ -38,4 +38,12 @@ describe("Line", function() {
       assert.isNotOk(actual, false);
     });
   });
+
+  describe("length", function() {
+    it("Should give the length zero if the line of same points", function() {
+      const line = new Line({ x: 1, y: 2 }, { x: 1, y: 2 });
+      const actual = line.length;
+      assert.strictEqual(actual, 0);
+    });
+  });
 });
