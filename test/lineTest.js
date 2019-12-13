@@ -22,5 +22,14 @@ describe("Line", function() {
       const actual = line1.isEqualTo(line2);
       assert.strictEqual(actual, false);
     });
+    it("Should validate if we given object is not instance of the class line", function() {
+      const line1 = new Line({ x: 2, y: 3 }, { x: 4, y: 5 });
+      const line2 = {
+        endA: { x: 2, y: 3 },
+        endB: { x: 4, z: 5 }
+      };
+      const actual = line1.isEqualTo(line2);
+      assert.strictEqual(actual, false);
+    });
   });
 });
