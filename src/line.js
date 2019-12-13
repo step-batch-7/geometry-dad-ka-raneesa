@@ -17,12 +17,10 @@ class Line {
   }
 
   isEqualTo(other) {
-    if (other instanceof Line) {
-      const areEndAEqual = arePointsEqual(this.endA, other.endA);
-      const areEndBEqual = arePointsEqual(this.endB, other.endB);
-      return areEndAEqual && areEndBEqual;
-    }
-    return false;
+    if (!(other instanceof Line)) return false;
+    const areEndAEqual = arePointsEqual(this.endA, other.endA);
+    const areEndBEqual = arePointsEqual(this.endB, other.endB);
+    return areEndAEqual && areEndBEqual;
   }
 
   get length() {
