@@ -37,6 +37,12 @@ class Line {
     console.log(dy / dx);
     return dy / dx;
   }
+
+  isParallelTo(otherLine) {
+    const slopeOfFirst = this.slope;
+    const slopeOfSecond = otherLine.slope;
+    return slopeOfFirst == slopeOfSecond;
+  }
 }
 
 module.exports = Line;
