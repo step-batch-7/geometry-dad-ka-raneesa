@@ -25,14 +25,10 @@ class Line {
     return false;
   }
 
-  distance() {
+  get length() {
     const dx = this.endA.x - this.endB.x;
     const dy = this.endA.y - this.endB.y;
     return Math.hypot(dx, dy);
-  }
-
-  get length() {
-    return this.distance();
   }
 }
 

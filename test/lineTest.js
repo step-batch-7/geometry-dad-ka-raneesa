@@ -45,5 +45,11 @@ describe("Line", function() {
       const actual = line.length;
       assert.strictEqual(actual, 0);
     });
+
+    it("Should give the length of the line of different points", function() {
+      const line = new Line({ x: 1, y: 2 }, { x: 5, y: 5 });
+      const actual = line.length;
+      assert.strictEqual(actual, 5);
+    });
   });
 });
