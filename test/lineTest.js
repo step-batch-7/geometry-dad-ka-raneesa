@@ -141,5 +141,23 @@ describe("Line", function() {
       const actual = line.findY(2);
       assert.strictEqual(actual, 5);
     });
+
+    it("Should give y-coordinate of second point if x coordinate is equal to x coordinate of second point", function() {
+      const line = new Line({ x: 2, y: 3 }, { x: 10, y: 5 });
+      const actual = line.findY(10);
+      assert.strictEqual(actual, 5);
+    });
+
+    it("Should give y-coordinate of a point if the line has positive points", function() {
+      const line = new Line({ x: 5, y: 5 }, { x: 1, y: 2 });
+      const actual = line.findY(3);
+      assert.approximately(actual, 3.0, 0.5);
+    });
+
+    it("Should give y-coordinate of a point if the line has positive points", function() {
+      const line = new Line({ x: -5, y: -3 }, { x: -1, y: -4 });
+      const actual = line.findY(-3);
+      assert.approximately(actual, -3.0, 0.5);
+    });
   });
 });

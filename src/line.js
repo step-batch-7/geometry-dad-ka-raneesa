@@ -57,7 +57,7 @@ class Line {
     if (endB.x == x) return endB.y;
     const slopeOfLine = this.slope;
     const dx = x - endA.x;
-    const product = slopeOfLine(dx);
+    const product = slopeOfLine * dx;
     const y = product + endA.y;
     console.log(y);
     return y;
