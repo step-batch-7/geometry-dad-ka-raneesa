@@ -26,30 +26,26 @@ describe("class", function() {
     it("should give true if both points are similar", function() {
       const point = new Point(2, 3);
       const other = new Point(2, 3);
-      const actual = point.isEqualTo(other);
-      assert.isTrue(actual);
+      assert.isTrue(point.isEqualTo(other));
     });
 
     it("should give false if both points are not similar", function() {
       const point = new Point(2, 3);
       const other = new Point(1, 3);
-      const actual = point.isEqualTo(other);
-      assert.isFalse(actual);
+      assert.isFalse(point.isEqualTo(other));
     });
 
     it("should give false if the type of 'other' doesn't belongs to the class Point", function() {
       const point = new Point(2, 3);
       const other = { x: 2, y: 3 };
-      const actual = point.isEqualTo(other);
-      assert.isFalse(actual);
+      assert.isFalse(point.isEqualTo(other));
     });
   });
 
   describe("clone", function() {
     it("should give the exact copy of the given point", function() {
       const point = new Point(2, 3);
-      const actual = point.clone();
-      assert.deepStrictEqual(actual, point);
+      assert.deepStrictEqual(point.clone(), point);
     });
   });
 });
