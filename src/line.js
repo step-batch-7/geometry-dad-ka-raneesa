@@ -32,7 +32,6 @@ class Line {
   get slope() {
     const dx = this.endB.x - this.endA.x;
     const dy = this.endA.y - this.endB.y;
-    console.log(dy / dx);
     return dy / dx;
   }
 
