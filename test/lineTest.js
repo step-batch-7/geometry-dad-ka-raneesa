@@ -63,12 +63,12 @@ describe("Line", function() {
     it("Should give slope of line has positive points ", function() {
       const line1 = new Line({ x: 5, y: 5 }, { x: 1, y: 2 });
       const actual = line1.slope;
-      assert.approximately(actual, -0.7, 0.5);
+      assert.approximately(actual, 0.7, 0.5);
     });
     it("Should give slope of line has positive points ", function() {
       const line1 = new Line({ x: -3, y: -4 }, { x: -1, y: -2 });
       const actual = line1.slope;
-      assert.approximately(actual, -1, 0.5);
+      assert.approximately(actual, 1, 0.1);
     });
   });
 
@@ -113,7 +113,7 @@ describe("Line", function() {
     it("Should give x-coordinate of a point if the line has positive points", function() {
       const line = new Line({ x: 5, y: 5 }, { x: 1, y: 2 });
       const actual = line.findX(3);
-      assert.approximately(actual, 7.0, 0.7);
+      assert.approximately(actual, 2.3, 0.1);
     });
     it("Should give x-coordinate of a point if the line has positive points", function() {
       const line = new Line({ x: -5, y: -3 }, { x: -1, y: -4 });
