@@ -1,3 +1,5 @@
+const Point = require("../src/point");
+
 const arePointsEqual = function(a, b) {
   const areXsEqual = a.x == b.x;
   const areYsEqual = a.y == b.y;
@@ -76,6 +78,15 @@ class Line {
     const firstLine = new Line(endA, midPoint);
     const secondLine = new Line(midPoint, endB);
     return [firstLine, secondLine];
+  }
+
+  hasPoint(point) {
+    if (!(point instanceof Point)) return false;
+    const { endA } = this;
+    const slope1 = this.slope;
+    const newLine = new Line(endA, point);
+    const slope2 = newLine.slope;
+    return slope1 == slope2;
   }
 }
 

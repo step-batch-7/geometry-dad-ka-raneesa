@@ -1,3 +1,5 @@
+"use strict";
+
 class Point {
   constructor(abscissa, ordinate) {
     this.x = abscissa;

@@ -1,7 +1,8 @@
 "use strict";
 
-const Line = require("../src/line.js");
 const assert = require("chai").assert;
+const Line = require("../src/line");
+const Point = require("../src/point");
 
 describe("Line", function() {
   describe("toString", function() {
@@ -198,6 +199,26 @@ describe("Line", function() {
       const firstLine = new Line({ x: 1, y: 2 }, { x: 2, y: 3 });
       const secondLine = new Line({ x: 2, y: 3 }, { x: 3, y: 4 });
       assert.deepStrictEqual(line.split(), [firstLine, secondLine]);
+    });
+  });
+
+  describe("hasPoint", function() {
+    it("Should give true for if point is on the line", function() {
+      const point = new Point(2, 3);
+      const line = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
+      assert.isTrue(line.hasPoint(point));
+    });
+
+    it("Should give false for if point is not on the line", function() {
+      const point = new Point(2, 4);
+      const line = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
+      assert.isFalse(line.hasPoint(point));
+    });
+
+    it("Should give false for if object is not instance of point", function() {
+      const point = { x: 2, y: 3 };
+      const line = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
+      assert.isFalse(line.hasPoint(point));
     });
   });
 });
