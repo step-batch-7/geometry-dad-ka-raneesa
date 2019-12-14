@@ -42,8 +42,9 @@ class Line {
 
   findX(y) {
     const { endA, endB } = this;
-    if (endA.y == y) return endA.x;
-    if (endB.y == y) return endB.x;
+    const min = Math.min(endA.y, endB.y);
+    const max = Math.max(endA.y, endB.y);
+    if (y < min || y > max) return NaN;
     const slopeOfLine = this.slope;
     const dy = y - endA.y;
     const product = slopeOfLine * endA.x;
@@ -53,13 +54,13 @@ class Line {
 
   findY(x) {
     const { endA, endB } = this;
-    if (endA.x == x) return endA.y;
-    if (endB.x == x) return endB.y;
+    const min = Math.min(endA.x, endB.x);
+    const max = Math.max(endA.x, endB.x);
+    if (x < min || x > max) return NaN;
     const slopeOfLine = this.slope;
     const dx = x - endA.x;
     const product = slopeOfLine * dx;
     const y = product + endA.y;
-    console.log(y);
     return y;
   }
 }
