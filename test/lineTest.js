@@ -148,6 +148,18 @@ describe("Line", function() {
   });
 
   describe("findY", function() {
+    it("Should give NaN if x coordinate is greater than line segment", function() {
+      const line = new Line({ x: 2, y: 5 }, { x: 10, y: 8 });
+      const actual = line.findX(13);
+      assert.isNaN(actual);
+    });
+
+    it("Should give NaN if x coordinate is lesser than line segment", function() {
+      const line = new Line({ x: 2, y: 5 }, { x: 10, y: 8 });
+      const actual = line.findX(0);
+      assert.isNaN(actual);
+    });
+
     it("Should give y-coordinate of first point if x coordinate is equal to x coordinate of first point", function() {
       const line = new Line({ x: 2, y: 5 }, { x: 10, y: 8 });
       const actual = line.findY(2);
