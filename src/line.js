@@ -4,6 +4,12 @@ const arePointsEqual = function(a, b) {
   return areXsEqual && areYsEqual;
 };
 
+const getMidPoint = function(endA, endB) {
+  const midOfXs = (endA.x + endB.x) / 2;
+  const midOfYs = (endA.y + endB.y) / 2;
+  return { x: midOfXs, y: midOfYs };
+};
+
 class Line {
   constructor(endA, endB) {
     this.endA = { x: endA.x, y: endA.y };
@@ -62,6 +68,14 @@ class Line {
     const product = slopeOfLine * dx;
     const y = product + endA.y;
     return y;
+  }
+
+  split() {
+    const { endA, endB } = this;
+    const midPoint = getMidPoint(endA, endB);
+    const firstLine = new Line(endA, midPoint);
+    const secondLine = new Line(midPoint, endB);
+    return [firstLine, secondLine];
   }
 }
 

@@ -216,4 +216,14 @@ describe("Line", function() {
       assert.approximately(actual, -3.0, 0.5);
     });
   });
+
+  describe("split", function() {
+    it("should give 2 lines splitted exactly at the centre of line", function() {
+      const line = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
+      const firstLine = new Line({ x: 1, y: 2 }, { x: 2, y: 3 });
+      const secondLine = new Line({ x: 2, y: 3 }, { x: 3, y: 4 });
+      const actual = line.split();
+      assert.deepStrictEqual(actual, [firstLine, secondLine]);
+    });
+  });
 });
