@@ -164,12 +164,12 @@ describe("Line", function() {
   describe("findY", function() {
     it("Should give NaN if x coordinate is greater than line segment", function() {
       const line = new Line({ x: 2, y: 5 }, { x: 10, y: 8 });
-      assert.isNaN(line.findX(13));
+      assert.isNaN(line.findY(13));
     });
 
     it("Should give NaN if x coordinate is lesser than line segment", function() {
       const line = new Line({ x: 2, y: 5 }, { x: 10, y: 8 });
-      assert.isNaN(line.findX(0));
+      assert.isNaN(line.findY(0));
     });
 
     it("Should give y-coordinate of first point if x coordinate is equal to x coordinate of first point", function() {
@@ -207,6 +207,18 @@ describe("Line", function() {
       const point = new Point(2, 3);
       const line = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
       assert.isTrue(line.hasPoint(point));
+    });
+
+    it("Should give false for if point is lesser than the line segment", function() {
+      const point = new Point(-1, 0);
+      const line = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
+      assert.isFalse(line.hasPoint(point));
+    });
+
+    it("Should give false for if point is greater than the line segment", function() {
+      const point = new Point(5, 6);
+      const line = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
+      assert.isFalse(line.hasPoint(point));
     });
 
     it("Should give false for if point is not on the line", function() {

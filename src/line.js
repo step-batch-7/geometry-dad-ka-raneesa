@@ -12,6 +12,16 @@ const getMidPoint = function(endA, endB) {
   return { x: midOfXs, y: midOfYs };
 };
 
+const isNotOnTheLine = function(endA, endB, point) {
+  const maxInXs = Math.max(endA.x, endB.x);
+  const minInXs = Math.min(endA.x, endB.x);
+  const maxInYs = Math.max(endA.y, endB.y);
+  const minInYs = Math.min(endA.y, endB.y);
+  const isLesser = point.x < minInXs && point.y < minInYs;
+  const isGreater = point.x > maxInXs && point.y > maxInYs;
+  return isLesser || isGreater;
+};
+
 class Line {
   constructor(endA, endB) {
     this.endA = { x: endA.x, y: endA.y };
@@ -82,6 +92,7 @@ class Line {
 
   hasPoint(point) {
     if (!(point instanceof Point)) return false;
+    if (isNotOnTheLine(this.endA, this.endB, point)) return false;
     const { endA } = this;
     const slope1 = this.slope;
     const newLine = new Line(endA, point);
