@@ -18,6 +18,10 @@ class Point {
     const areYsEqual = this.y == other.y;
     return areXsEqual && areYsEqual;
   }
+
+  clone() {
+    return new Point(this.x, this.y);
+  }
 }
 
 module.exports = Point;

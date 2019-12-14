@@ -44,4 +44,12 @@ describe("class", function() {
       assert.isFalse(actual);
     });
   });
+
+  describe("clone", function() {
+    it("should give the exact copy of the given point", function() {
+      const point = new Point(2, 3);
+      const actual = point.clone();
+      assert.deepStrictEqual(actual, point);
+    });
+  });
 });
