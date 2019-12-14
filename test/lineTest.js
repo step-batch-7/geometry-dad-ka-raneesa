@@ -8,7 +8,7 @@ describe("Line", function() {
     it("Should give the string representation", function() {
       const line1 = new Line({ x: 2, y: 3 }, { x: 4, y: 5 });
       const actual = line1.toString();
-      const expected = `Line (2,3) (4,5)`;
+      const expected = `[Line (2,3) to (4,5)]`;
       assert.deepStrictEqual(actual, expected);
     });
   });
