@@ -110,10 +110,15 @@ describe("Line", function() {
   });
 
   describe("findX", function() {
-    it("Should give x-coordinate of a point", function() {
+    it("Should give x-coordinate of a point if the line has positive points", function() {
       const line = new Line({ x: 5, y: 5 }, { x: 1, y: 2 });
       const actual = line.findX(3);
       assert.approximately(actual, 7.0, 0.7);
+    });
+    it("Should give x-coordinate of a point if the line has positive points", function() {
+      const line = new Line({ x: -5, y: -3 }, { x: -1, y: -4 });
+      const actual = line.findX(-3);
+      assert.approximately(actual, -5.0, 0.1);
     });
   });
 });
