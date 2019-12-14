@@ -162,12 +162,12 @@ describe("Line", function() {
   });
 
   describe("findY", function() {
-    it("Should give NaN if x coordinate is greater than line segment", function() {
+    it("Should give NaN if x coordinate has same slope but not on the line", function() {
       const line = new Line({ x: 2, y: 5 }, { x: 10, y: 8 });
       assert.isNaN(line.findY(13));
     });
 
-    it("Should give NaN if x coordinate is lesser than line segment", function() {
+    it("Should give NaN if y coordinate has same slope but not on the line", function() {
       const line = new Line({ x: 2, y: 5 }, { x: 10, y: 8 });
       assert.isNaN(line.findY(0));
     });
@@ -203,13 +203,13 @@ describe("Line", function() {
   });
 
   describe("hasPoint", function() {
-    it("Should give true for if point is on the line", function() {
+    it("Should give true for if point has same slope but is on left side,not on the line", function() {
       const point = new Point(2, 3);
       const line = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
       assert.isTrue(line.hasPoint(point));
     });
 
-    it("Should give false for if point is lesser than the line segment", function() {
+    it("Should give false for if point has same slope but is on right ,not on the line", function() {
       const point = new Point(-1, 0);
       const line = new Line({ x: 1, y: 2 }, { x: 3, y: 4 });
       assert.isFalse(line.hasPoint(point));
