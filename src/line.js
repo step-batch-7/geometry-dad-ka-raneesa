@@ -32,7 +32,6 @@ class Line {
   get slope() {
     const dx = this.endB.x - this.endA.x;
     const dy = this.endB.y - this.endA.y;
-    console.log(dy / dx);
     return dy / dx;
   }
 
@@ -44,7 +43,7 @@ class Line {
   }
 
   findX(y) {
-    if ((this.endA.y == this.endB.y) == y) return Infinity;
+    if (this.endA.y == y && this.endB.y == y) return Infinity;
     const slopeOfLine = this.slope;
     const dy = y - this.endA.y;
     const x = (dy + slopeOfLine * this.endA.x) / slopeOfLine;
