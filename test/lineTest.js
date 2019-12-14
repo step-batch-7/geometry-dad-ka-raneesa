@@ -108,4 +108,12 @@ describe("Line", function() {
       assert.isNotOk(actual, false);
     });
   });
+
+  describe("findX", function() {
+    it("Should give x-coordinate of a point", function() {
+      const line = new Line({ x: 5, y: 5 }, { x: 1, y: 2 });
+      const actual = line.findX(3);
+      assert.approximately(actual, 7.0, 0.7);
+    });
+  });
 });
