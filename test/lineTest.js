@@ -65,10 +65,42 @@ describe("Line", function() {
       const actual = line1.slope;
       assert.approximately(actual, 0.7, 0.5);
     });
+
     it("Should give slope of line has positive points ", function() {
       const line1 = new Line({ x: -3, y: -4 }, { x: -1, y: -2 });
       const actual = line1.slope;
       assert.approximately(actual, 1, 0.1);
+    });
+
+    it("should give the positive infinity if the x coordinates are the same and endA ordinate is less than endB ordinate", function() {
+      const endA = { x: 1, y: 0 };
+      const endB = { x: 1, y: 5 };
+      const line = new Line(endA, endB);
+      const expected = Infinity;
+      assert.strictEqual(line.slope, expected);
+    });
+
+    it("should give the negative infinity if the x coordinates are the same and endB ordinate is less than endA ordinate", function() {
+      const endA = { x: 1, y: 5 };
+      const endB = { x: 1, y: 0 };
+      const line = new Line(endA, endB);
+      const expected = -Infinity;
+      assert.strictEqual(line.slope, expected);
+    });
+
+    it("should give zero if the ordinates are equal", function() {
+      const endA = { x: 2, y: 5 };
+      const endB = { x: 1, y: 5 };
+      const line = new Line(endA, endB);
+      const expected = 0;
+      assert.strictEqual(line.slope, expected);
+    });
+
+    it("should give NAN if differences between the ends is zero", function() {
+      const endA = { x: 2, y: 5 };
+      const endB = { x: 2, y: 5 };
+      const line = new Line(endA, endB);
+      assert.isNaN(line.slope);
     });
   });
 
