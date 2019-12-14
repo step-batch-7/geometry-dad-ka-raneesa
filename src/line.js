@@ -1,5 +1,3 @@
-"use strict";
-
 const arePointsEqual = function(a, b) {
   const areXsEqual = a.x == b.x;
   const areYsEqual = a.y == b.y;
@@ -43,12 +41,26 @@ class Line {
   }
 
   findX(y) {
-    if (this.endA.y == y) return this.endA.x;
-    if (this.endB.y == y) return this.endB.x;
+    const { endA, endB } = this;
+    if (endA.y == y) return endA.x;
+    if (endB.y == y) return endB.x;
     const slopeOfLine = this.slope;
-    const dy = y - this.endA.y;
-    const x = (dy + slopeOfLine * this.endA.x) / slopeOfLine;
+    const dy = y - endA.y;
+    const product = slopeOfLine * endA.x;
+    const x = (dy + product) / slopeOfLine;
     return x;
+  }
+
+  findY(x) {
+    const { endA, endB } = this;
+    if (endA.x == x) return endA.y;
+    if (endB.x == x) return endB.y;
+    const slopeOfLine = this.slope;
+    const dx = x - endA.x;
+    const product = slopeOfLine(dx);
+    const y = product + endA.y;
+    console.log(y);
+    return y;
   }
 }
 

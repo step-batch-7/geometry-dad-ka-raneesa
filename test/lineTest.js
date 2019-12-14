@@ -134,4 +134,12 @@ describe("Line", function() {
       assert.approximately(actual, -5.0, 0.1);
     });
   });
+
+  describe("findY", function() {
+    it("Should give y-coordinate of first point if x coordinate is equal to x coordinate of first point", function() {
+      const line = new Line({ x: 2, y: 5 }, { x: 10, y: 8 });
+      const actual = line.findY(2);
+      assert.strictEqual(actual, 5);
+    });
+  });
 });
