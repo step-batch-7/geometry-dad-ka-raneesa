@@ -43,7 +43,8 @@ class Line {
   }
 
   findX(y) {
-    if (this.endA.y == y && this.endB.y == y) return Infinity;
+    if (this.endA.y == y) return this.endA.x;
+    if (this.endB.y == y) return this.endB.x;
     const slopeOfLine = this.slope;
     const dy = y - this.endA.y;
     const x = (dy + slopeOfLine * this.endA.x) / slopeOfLine;

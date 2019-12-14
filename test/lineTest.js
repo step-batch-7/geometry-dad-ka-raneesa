@@ -110,10 +110,16 @@ describe("Line", function() {
   });
 
   describe("findX", function() {
-    it("Should give x-coordinate of a point as infinity if the line has same y coordinates", function() {
-      const line = new Line({ x: 2, y: 5 }, { x: 10, y: 5 });
+    it("Should give x-coordinate of first point if y coordinate is equal to y coordinate of first point", function() {
+      const line = new Line({ x: 2, y: 5 }, { x: 10, y: 8 });
       const actual = line.findX(5);
-      assert.strictEqual(actual, Infinity);
+      assert.strictEqual(actual, 2);
+    });
+
+    it("Should give x-coordinate of second point if y coordinate is equal to y coordinate of second point", function() {
+      const line = new Line({ x: 2, y: 3 }, { x: 10, y: 5 });
+      const actual = line.findX(5);
+      assert.strictEqual(actual, 10);
     });
 
     it("Should give x-coordinate of a point if the line has positive points", function() {
