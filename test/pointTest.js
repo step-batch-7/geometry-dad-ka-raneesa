@@ -21,4 +21,27 @@ describe("class", function() {
       assert.strictEqual(actual, 6);
     });
   });
+
+  describe("isEqualTo", function() {
+    it("should give true if both points are similar", function() {
+      const point = new Point(2, 3);
+      const other = new Point(2, 3);
+      const actual = point.isEqualTo(other);
+      assert.isTrue(actual);
+    });
+
+    it("should give false if both points are not similar", function() {
+      const point = new Point(2, 3);
+      const other = new Point(1, 3);
+      const actual = point.isEqualTo(other);
+      assert.isFalse(actual);
+    });
+
+    it("should give false if the type of 'other' doesn't belongs to the class Point", function() {
+      const point = new Point(2, 3);
+      const other = { x: 2, y: 3 };
+      const actual = point.isEqualTo(other);
+      assert.isFalse(actual);
+    });
+  });
 });
