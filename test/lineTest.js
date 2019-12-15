@@ -98,7 +98,7 @@ describe("Line", function() {
   });
 
   describe("isParallelTo", function() {
-    it("Should validate if two lines has same points", function() {
+    it("should invalidate overlapping lines", function() {
       const line1 = new Line({ x: 5, y: 5 }, { x: 1, y: 2 });
       const line2 = new Line({ x: 5, y: 5 }, { x: 1, y: 2 });
       assert.isFalse(line1.isParallelTo(line2));
@@ -126,6 +126,11 @@ describe("Line", function() {
       const line1 = new Line({ x: -5, y: -5 }, { x: -1, y: -2 });
       const line2 = new Line({ x: -6, y: -7 }, { x: -3, y: -8 });
       assert.isFalse(line1.isParallelTo(line2));
+    });
+
+    it("should invalidate line itself is passed", () => {
+      const line = new Line({ x: 0, y: 0 }, { x: 1, y: 0 });
+      assert.isFalse(line.isParallelTo(line));
     });
   });
 
