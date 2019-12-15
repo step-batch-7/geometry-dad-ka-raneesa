@@ -55,14 +55,14 @@ describe("Line", function() {
   });
 
   describe("slope", function() {
-    it("Should give slope of line has positive points ", function() {
-      const line = new Line({ x: 5, y: 5 }, { x: 1, y: 2 });
-      assert.approximately(line.slope, 0.7, 0.5);
+    it("should return slope of given line when slope is positive", () => {
+      const line = new Line({ x: 4, y: 3 }, { x: 1, y: 2 });
+      assert.approximately(line.slope, 0.33, 0.01);
     });
 
-    it("Should give slope of line has positive points ", function() {
-      const line = new Line({ x: -3, y: -4 }, { x: -1, y: -2 });
-      assert.approximately(line.slope, 1, 0.1);
+    it("should return slope of given line if slope is negative", () => {
+      const line = new Line({ x: 0, y: 3 }, { x: 1, y: 1 });
+      assert.strictEqual(line.slope, -2);
     });
 
     it("should give the positive infinity if the x coordinates are the same and endA ordinate is less than endB ordinate", function() {
