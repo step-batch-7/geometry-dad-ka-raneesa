@@ -12,6 +12,10 @@ const getMidPoint = function(endA, endB) {
   return { x: midOfXs, y: midOfYs };
 };
 
+const findIntercept = function(x, y, slope) {
+  return y - slope * x;
+};
+
 class Line {
   constructor(endA, endB) {
     this.endA = { x: endA.x, y: endA.y };
@@ -43,9 +47,19 @@ class Line {
 
   isParallelTo(other) {
     if (!(other instanceof Line) || this.isEqualTo(other)) return false;
-    const slopeOfFirst = this.slope;
-    const slopeOfSecond = other.slope;
-    return slopeOfFirst == slopeOfSecond;
+    const yInterceptOfOtherLine = findIntercept(
+      other.endA.x,
+      other.endA.y,
+      other.slope
+    );
+    const yInterceptOfThisLine = findIntercept(
+      this.endA.x,
+      this.endA.y,
+      this.slope
+    );
+    return (
+      yInterceptOfOtherLine != yInterceptOfThisLine && other.slope == this.slope
+    );
   }
 
   findX(y) {
