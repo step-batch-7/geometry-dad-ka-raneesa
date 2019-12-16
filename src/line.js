@@ -22,6 +22,12 @@ const isNotInRange = (range, coordinate) => {
   return coordinate < min || coordinate > max;
 };
 
+const getPointCoordinates = function(ratio, endA, endB) {
+  const x = (1 - ratio) * endA.x + ratio * endB.x;
+  const y = (1 - ratio) * endA.y + ratio * endB.y;
+  return [x, y];
+};
+
 class Line {
   constructor(endA, endB) {
     this.endA = { x: endA.x, y: endA.y };
@@ -102,6 +108,15 @@ class Line {
   hasPoint(point) {
     if (!(point instanceof Point)) return false;
     return point.y == this.findY(point.x) || point.x == this.findX(point.y);
+  }
+
+  findPointFromStart(distance) {
+    const { endA, endB } = this;
+    if (!Number.isInteger(distance) || distance > this.length || distance < 0)
+      return null;
+    const ratioOfDist = distance / this.length;
+    const [x, y] = getPointCoordinates(ratioOfDist, endA, endB);
+    return new Point(x, y);
   }
 }
 

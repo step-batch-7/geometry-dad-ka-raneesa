@@ -248,4 +248,20 @@ describe("Line", function() {
       assert.isFalse(line.hasPoint(point));
     });
   });
+
+  describe("findPointFromStart", function() {
+    it("should give the point of the certain distance from the start of the line if it exists on the line segment", function() {
+      const line = new Line({ x: 1, y: 2 }, { x: 4, y: 2 });
+      const point = new Point(3, 2);
+      assert.deepStrictEqual(line.findPointFromStart(2), point);
+    });
+    it("should give null if the distance is greater than the line distance", function() {
+      const line = new Line({ x: 1, y: 6 }, { x: 4, y: 6 });
+      assert.isNull(line.findPointFromStart(12));
+    });
+    it("should give null if the distance given is not a number", function() {
+      const line = new Line({ x: 1, y: 2 }, { x: 4, y: 2 });
+      assert.isNull(line.findPointFromStart("2"));
+    });
+  });
 });
