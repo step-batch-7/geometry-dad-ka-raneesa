@@ -25,12 +25,9 @@ class Circle {
     return 2 * Math.PI * this.radius;
   }
 
-  hasPoint(point) {
-    if (!(point instanceof Point)) return false;
-    const dx = point.x - this.centre.x;
-    const dy = point.y - this.centre.y;
-    const sumOfSqrOfCoordinates = Math.pow(dx, 2) + Math.pow(dy, 2);
-    return sumOfSqrOfCoordinates == Math.pow(this.radius, 2);
+  hasPoint(other) {
+    if (!(other instanceof Point)) return false;
+    return this.centre.findDistanceTo(other) == this.radius;
   }
 }
 
