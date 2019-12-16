@@ -26,7 +26,7 @@ class Circle {
   }
 
   hasPoint(point) {
-    if (!(point instanceof Point)) return Null;
+    if (!(point instanceof Point)) return false;
     const dx = point.x - this.centre.x;
     const dy = point.y - this.centre.y;
     const sumOfSqrOfCoordinates = Math.pow(dx, 2) + Math.pow(dy, 2);
