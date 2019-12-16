@@ -69,5 +69,10 @@ describe("class", function() {
       const point2 = new Point(-5, -8);
       assert.approximately(point1.findDistanceTo(point2), 5, 0.9);
     });
+
+    it("Should give NaN if it is not instance of point", function() {
+      const point = new Point(-2, -3);
+      assert.isNaN(point.findDistanceTo({ x: -5, y: -8 }));
+    });
   });
 });
