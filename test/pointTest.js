@@ -50,4 +50,24 @@ describe("class", function() {
       assert.deepStrictEqual(point.clone(), point);
     });
   });
+
+  describe("findDistanceTo", function() {
+    it("Should give the length zero if points are equal", function() {
+      const point1 = new Point(2, 3);
+      const point2 = new Point(2, 3);
+      assert.strictEqual(point1.findDistanceTo(point2), 0);
+    });
+
+    it("Should give the length if it is positive points", function() {
+      const point1 = new Point(2, 3);
+      const point2 = new Point(5, 8);
+      assert.approximately(point1.findDistanceTo(point2), 5, 0.9);
+    });
+
+    it("Should give the length if it is negative points", function() {
+      const point1 = new Point(-2, -3);
+      const point2 = new Point(-5, -8);
+      assert.approximately(point1.findDistanceTo(point2), 5, 0.9);
+    });
+  });
 });
