@@ -22,9 +22,9 @@ const isNotInRange = (range, coordinate) => {
   return coordinate < min || coordinate > max;
 };
 
-const getPointCoordinates = function(ratio, endA, endB) {
-  const x = (1 - ratio) * endA.x + ratio * endB.x;
-  const y = (1 - ratio) * endA.y + ratio * endB.y;
+const getPointCoordinates = function(ratio, p1, p2) {
+  const x = (1 - ratio) * p1.x + ratio * p2.x;
+  const y = (1 - ratio) * p1.y + ratio * p2.y;
   return [x, y];
 };
 
@@ -82,7 +82,6 @@ class Line {
     const dy = y - endA.y;
     const product = slopeOfLine * endA.x;
     const x = (dy + product) / slopeOfLine;
-    console.log(x);
     return x;
   }
 
@@ -116,6 +115,15 @@ class Line {
       return null;
     const ratioOfDist = distance / this.length;
     const [x, y] = getPointCoordinates(ratioOfDist, endA, endB);
+    return new Point(x, y);
+  }
+
+  findPointFromEnd(distance) {
+    const { endA, endB } = this;
+    if (!Number.isInteger(distance) || distance > this.length || distance < 0)
+      return null;
+    const ratioOfDist = distance / this.length;
+    const [x, y] = getPointCoordinates(ratioOfDist, endB, endA);
     return new Point(x, y);
   }
 }
