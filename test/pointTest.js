@@ -1,7 +1,8 @@
 "use strict";
 
 const assert = require("chai").assert;
-const Point = require("./../src/point");
+const Point = require("../src/point");
+const Line = require("../src/line");
 
 describe("class", function() {
   describe("toString", function() {
@@ -73,6 +74,19 @@ describe("class", function() {
     it("Should give NaN if it is not instance of point", function() {
       const point = new Point(-2, -3);
       assert.isNaN(point.findDistanceTo({ x: -5, y: -8 }));
+    });
+  });
+
+  describe("isOn", function() {
+    it("should validate if the point is on the line", function() {
+      const point = new Point(2, 2);
+      const line = new Line({ x: 5, y: 5 }, { x: 1, y: 1 });
+      assert.isTrue(point.isOn(line));
+    });
+    it("should invalidate if the point is not on the line", function() {
+      const point = new Point(2, 2);
+      const line = new Line({ x: 5, y: 5 }, { x: 7, y: 1 });
+      assert.isFalse(point.isOn(line));
     });
   });
 });
