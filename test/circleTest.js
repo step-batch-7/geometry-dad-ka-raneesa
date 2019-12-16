@@ -30,4 +30,11 @@ describe("Circle", function() {
       assert.isFalse(circle.isEqualTo({ x: 4, y: 3 }, 4));
     });
   });
+
+  describe("are", function() {
+    it("Should give the area of a circle", function() {
+      const circle = new Circle({ x: 2, y: 3 }, 7);
+      assert.approximately(circle.area, 153, 1.0);
+    });
+  });
 });

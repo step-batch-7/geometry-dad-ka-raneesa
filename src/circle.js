@@ -18,6 +18,10 @@ class Circle {
     const centrePoint2 = new Point(other.centre.x, other.centre.y);
     return centrePoint1.isEqualTo(centrePoint2) && this.radius == other.radius;
   }
+
+  get area() {
+    return Math.PI * this.radius * this.radius;
+  }
 }
 
 module.exports = Circle;
