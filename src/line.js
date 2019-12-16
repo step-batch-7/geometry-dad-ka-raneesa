@@ -16,6 +16,12 @@ const findIntercept = function(x, y, slope) {
   return y - slope * x;
 };
 
+const isNotInRange = (range, coordinate) => {
+  const min = Math.min(range[0], range[1]);
+  const max = Math.max(range[0], range[1]);
+  return coordinate < min || coordinate > max;
+};
+
 class Line {
   constructor(endA, endB) {
     this.endA = { x: endA.x, y: endA.y };
@@ -64,9 +70,7 @@ class Line {
 
   findX(y) {
     const { endA, endB } = this;
-    const min = Math.min(endA.y, endB.y);
-    const max = Math.max(endA.y, endB.y);
-    if (y < min || y > max) return NaN;
+    if (isNotInRange([endA.y, endB.y], y)) return NaN;
     const slopeOfLine = this.slope;
     const dy = y - endA.y;
     const product = slopeOfLine * endA.x;
@@ -76,9 +80,7 @@ class Line {
 
   findY(x) {
     const { endA, endB } = this;
-    const min = Math.min(endA.x, endB.x);
-    const max = Math.max(endA.x, endB.x);
-    if (x < min || x > max) return NaN;
+    if (isNotInRange([endA.x, endB.x, x], x)) return NaN;
     const slopeOfLine = this.slope;
     const dx = x - endA.x;
     const product = slopeOfLine * dx;
