@@ -4,7 +4,7 @@ const Point = require("../src/point");
 
 class Circle {
   constructor(centre, radius) {
-    this.centre = { x: centre.x, y: centre.y };
+    this.centre = new Point(centre.x, centre.y);
     this.radius = radius;
   }
 
@@ -14,9 +14,7 @@ class Circle {
 
   isEqualTo(other) {
     if (!(other instanceof Circle)) return false;
-    const centrePoint1 = new Point(this.centre.x, this.centre.y);
-    const centrePoint2 = new Point(other.centre.x, other.centre.y);
-    return centrePoint1.isEqualTo(centrePoint2) && this.radius == other.radius;
+    return this.centre.isEqualTo(other.centre) && this.radius == other.radius;
   }
 
   get area() {
