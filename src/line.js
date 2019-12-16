@@ -107,18 +107,18 @@ class Line {
 
   findPointFromStart(distance) {
     const { endA, endB } = this;
-    if (!Number.isInteger(distance) || distance > this.length || distance < 0)
-      return null;
     const ratioOfDist = distance / this.length;
+    if (!Number.isInteger(distance) || ratioOfDist > 1 || ratioOfDist < 0)
+      return null;
     const [x, y] = getPointCoordinates(ratioOfDist, endA, endB);
     return new Point(x, y);
   }
 
   findPointFromEnd(distance) {
     const { endA, endB } = this;
-    if (!Number.isInteger(distance) || distance > this.length || distance < 0)
-      return null;
     const ratioOfDist = distance / this.length;
+    if (!Number.isInteger(distance) || ratioOfDist > 1 || ratioOfDist < 0)
+      return null;
     const [x, y] = getPointCoordinates(ratioOfDist, endB, endA);
     return new Point(x, y);
   }
