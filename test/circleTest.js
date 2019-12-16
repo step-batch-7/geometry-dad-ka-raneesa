@@ -31,10 +31,17 @@ describe("Circle", function() {
     });
   });
 
-  describe("are", function() {
+  describe("area", function() {
     it("Should give the area of a circle", function() {
       const circle = new Circle({ x: 2, y: 3 }, 7);
       assert.approximately(circle.area, 153, 1.0);
+    });
+  });
+
+  describe("perimeter", function() {
+    it("Should give the perimeter of a circle", function() {
+      const circle = new Circle({ x: 2, y: 3 }, 7);
+      assert.approximately(circle.perimeter, 43, 1);
     });
   });
 });
