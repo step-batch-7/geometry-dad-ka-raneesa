@@ -1,11 +1,5 @@
 const Point = require("../src/point");
 
-const arePointsEqual = function(a, b) {
-  const areXsEqual = a.x == b.x;
-  const areYsEqual = a.y == b.y;
-  return areXsEqual && areYsEqual;
-};
-
 const getMidPoint = function(endA, endB) {
   const midOfXs = (endA.x + endB.x) / 2;
   const midOfYs = (endA.y + endB.y) / 2;
@@ -40,9 +34,11 @@ class Line {
 
   isEqualTo(other) {
     if (!(other instanceof Line)) return false;
-    const areEndAEqual = arePointsEqual(this.endA, other.endA);
-    const areEndBEqual = arePointsEqual(this.endB, other.endB);
-    return areEndAEqual && areEndBEqual;
+    const thisEndA = new Point(this.endA.x, this.endA.y);
+    const thisEndB = new Point(this.endB.x, this.endB.y);
+    const otherEndA = new Point(other.endA.x, other.endA.y);
+    const otherEndB = new Point(other.endB.x, other.endB.y);
+    return thisEndA.isEqualTo(otherEndA) && thisEndB.isEqualTo(otherEndB);
   }
 
   get length() {
