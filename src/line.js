@@ -24,8 +24,8 @@ const getPointCoordinates = function(ratio, p1, p2) {
 
 class Line {
   constructor(endA, endB) {
-    this.endA = { x: endA.x, y: endA.y };
-    this.endB = { x: endB.x, y: endB.y };
+    this.endA = new Point(endA.x, endA.y);
+    this.endB = new Point(endB.x, endB.y);
   }
 
   toString() {
@@ -34,11 +34,7 @@ class Line {
 
   isEqualTo(other) {
     if (!(other instanceof Line)) return false;
-    const thisEndA = new Point(this.endA.x, this.endA.y);
-    const thisEndB = new Point(this.endB.x, this.endB.y);
-    const otherEndA = new Point(other.endA.x, other.endA.y);
-    const otherEndB = new Point(other.endB.x, other.endB.y);
-    return thisEndA.isEqualTo(otherEndA) && thisEndB.isEqualTo(otherEndB);
+    return this.endA.isEqualTo(other.endA) && this.endB.isEqualTo(other.endB);
   }
 
   get length() {
@@ -77,8 +73,7 @@ class Line {
     const slopeOfLine = this.slope;
     const dy = y - endA.y;
     const product = slopeOfLine * endA.x;
-    const x = (dy + product) / slopeOfLine;
-    return x;
+    return (dy + product) / slopeOfLine;
   }
 
   findY(x) {
@@ -88,8 +83,7 @@ class Line {
     const slopeOfLine = this.slope;
     const dx = x - endA.x;
     const product = slopeOfLine * dx;
-    const y = product + endA.y;
-    return y;
+    return product + endA.y;
   }
 
   split() {
@@ -108,19 +102,13 @@ class Line {
   findPointFromStart(distance) {
     const { endA, endB } = this;
     const ratioOfDist = distance / this.length;
-    if (!Number.isInteger(distance) || ratioOfDist > 1 || ratioOfDist < 0)
-      return null;
+    if (isNotInRange([1, 0], ratioOfDist)) return null;
     const [x, y] = getPointCoordinates(ratioOfDist, endA, endB);
     return new Point(x, y);
   }
 
   findPointFromEnd(distance) {
-    const { endA, endB } = this;
-    const ratioOfDist = distance / this.length;
-    if (!Number.isInteger(distance) || ratioOfDist > 1 || ratioOfDist < 0)
-      return null;
-    const [x, y] = getPointCoordinates(ratioOfDist, endB, endA);
-    return new Point(x, y);
+    return this.findPointFromStart(this.length - distance);
   }
 }
 

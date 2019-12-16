@@ -259,10 +259,6 @@ describe("Line", function() {
       const line = new Line({ x: 1, y: 6 }, { x: 4, y: 6 });
       assert.isNull(line.findPointFromStart(12));
     });
-    it("should give null if the distance given is not a number", function() {
-      const line = new Line({ x: 1, y: 2 }, { x: 4, y: 2 });
-      assert.isNull(line.findPointFromStart("2"));
-    });
   });
 
   describe("findPointFromEnd", function() {
@@ -274,10 +270,6 @@ describe("Line", function() {
     it("should give null if the distance is greater than the line distance", function() {
       const line = new Line({ x: 1, y: 6 }, { x: 4, y: 6 });
       assert.isNull(line.findPointFromEnd(12));
-    });
-    it("should give null if the distance given is not a number", function() {
-      const line = new Line({ x: 1, y: 2 }, { x: 4, y: 2 });
-      assert.isNull(line.findPointFromEnd("2"));
     });
   });
 });
