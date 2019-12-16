@@ -68,19 +68,17 @@ class Line {
     const { endA, endB } = this;
     if (isNotInRange([endA.y, endB.y], y)) return NaN;
     if (endA.y == endB.y) return endA.x;
-    const slopeOfLine = this.slope;
     const dy = y - endA.y;
-    const product = slopeOfLine * endA.x;
-    return (dy + product) / slopeOfLine;
+    const product = this.slope * endA.x;
+    return (dy + product) / this.slope;
   }
 
   findY(x) {
     const { endA, endB } = this;
     if (isNotInRange([endA.x, endB.x, x], x)) return NaN;
     if (endA.x == endB.x) return endA.y;
-    const slopeOfLine = this.slope;
     const dx = x - endA.x;
-    const product = slopeOfLine * dx;
+    const product = this.slope * dx;
     return product + endA.y;
   }
 
