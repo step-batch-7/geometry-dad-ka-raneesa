@@ -97,9 +97,10 @@ class Line {
   }
 
   hasPoint(point) {
+    if (!(point instanceof Point)) return false;
     const isOnLine =
       point.y == this.findY(point.x) || point.x == this.findX(point.y);
-    return point instanceof Point && isOnLine;
+    return isOnLine;
   }
 }
 
