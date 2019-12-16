@@ -76,6 +76,12 @@ describe("Point", function() {
       const point = new Point(-2, -3);
       assert.isNaN(point.findDistanceTo({ x: -5, y: -8 }));
     });
+
+    it("should give the distance when one point is origin", function() {
+      const point1 = new Point(1, 1);
+      const point2 = new Point(0, 0);
+      assert.approximately(point1.findDistanceTo(point2), 1, 0.5);
+    });
   });
 
   describe("isOn", function() {
