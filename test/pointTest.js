@@ -4,7 +4,7 @@ const assert = require("chai").assert;
 const Point = require("../src/point");
 const Line = require("../src/line");
 
-describe("class", function() {
+describe("Point", function() {
   describe("toString", function() {
     it("should give string representation of the point", function() {
       const point = new Point(2, 3);

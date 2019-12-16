@@ -12,4 +12,11 @@ describe("Circle", function() {
       assert.deepStrictEqual(actual, expected);
     });
   });
+
+  describe("isEqualTo", function() {
+    it("Should give true if we give same circle of same centre and radius", function() {
+      const circle = new Circle({ x: 2, y: 3 }, 5);
+      assert.isTrue(circle.isEqualTo(circle));
+    });
+  });
 });
