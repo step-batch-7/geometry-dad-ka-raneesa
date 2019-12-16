@@ -145,6 +145,11 @@ describe("Line", function() {
       assert.isNaN(line.findX(9));
     });
 
+    it("Should give first x-coordinate if  both y coordinates are equal", function() {
+      const line = new Line({ x: 2, y: 8 }, { x: 10, y: 8 });
+      assert.strictEqual(line.findX(8), 2);
+    });
+
     it("Should give x-coordinate of first point if y coordinate is equal to y coordinate of first point", function() {
       const line = new Line({ x: 2, y: 5 }, { x: 10, y: 8 });
       assert.strictEqual(line.findX(5), 2);
@@ -175,6 +180,11 @@ describe("Line", function() {
     it("Should give NaN if y coordinate has same slope but not on the line", function() {
       const line = new Line({ x: 2, y: 5 }, { x: 10, y: 8 });
       assert.isNaN(line.findY(0));
+    });
+
+    it("Should give first y- coordinate if both x coordinates are equal", function() {
+      const line = new Line({ x: 2, y: 5 }, { x: 2, y: 8 });
+      assert.strictEqual(line.findY(2), 5);
     });
 
     it("Should give y-coordinate of first point if x coordinate is equal to x coordinate of first point", function() {
