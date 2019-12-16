@@ -14,9 +14,15 @@ describe("Circle", function() {
   });
 
   describe("isEqualTo", function() {
-    it("Should give true if we give two circles of same centre and radius", function() {
+    it("Should give true if we give same circle", function() {
       const circle = new Circle({ x: 2, y: 3 }, 5);
       assert.isTrue(circle.isEqualTo(circle));
+    });
+
+    it("Should give true if we give two circles of same centre and radius", function() {
+      const circle = new Circle({ x: 1, y: 2 }, 5);
+      const other = new Circle({ x: 1, y: 2 }, 5);
+      assert.isTrue(circle.isEqualTo(other));
     });
 
     it("Should give false if we give two circle of distinct centres and radiuses", function() {
