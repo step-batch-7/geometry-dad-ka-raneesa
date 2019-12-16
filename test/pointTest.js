@@ -73,7 +73,7 @@ describe("Point", function() {
 
     it("Should give NaN if it is not instance of point", function() {
       const point = new Point(-2, -3);
-      assert.isFalse(point.findDistanceTo({ x: -5, y: -8 }));
+      assert.isNaN(point.findDistanceTo({ x: -5, y: -8 }));
     });
   });
 
