@@ -88,6 +88,12 @@ describe("Circle", function() {
   });
 
   describe("covers", () => {
+    it("should validate a point that is on the circumference", () => {
+      const circle = new Circle({ x: 0, y: 0 }, 5);
+      const point = new Point(0, 5);
+      assert.isTrue(circle.covers(point));
+    });
+
     it("should validate a point that is inside the circle", () => {
       const circle = new Circle({ x: 0, y: 0 }, 5);
       const point = new Point(4, 0);
@@ -96,7 +102,7 @@ describe("Circle", function() {
 
     it("should invalidate a point that is not inside the circle", () => {
       const circle = new Circle({ x: 0, y: 0 }, 5);
-      const point = new Point(0, 5);
+      const point = new Point(0, 6);
       assert.isFalse(circle.covers(point));
     });
 
