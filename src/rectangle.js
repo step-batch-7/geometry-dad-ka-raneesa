@@ -15,7 +15,13 @@ class Rectangle {
   area() {
     const length = this.diaEndA.x - this.diaEndB.x;
     const breadth = this.diaEndA.y - this.diaEndB.x;
-    return length * breadth;
+    return Math.abs(length) * Math.abs(breadth);
+  }
+
+  perimeter() {
+    const length = this.diaEndA.x - this.diaEndB.x;
+    const breadth = this.diaEndA.y - this.diaEndB.x;
+    return 2 * (Math.abs(length) + Math.abs(breadth));
   }
 }
 
