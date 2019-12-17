@@ -2,6 +2,7 @@
 
 const assert = require("chai").assert;
 const Rectangle = require("../src/rectangle");
+const Point = require("../src/point");
 
 describe("Rectangle", function() {
   describe("toString", function() {
@@ -49,6 +50,32 @@ describe("Rectangle", function() {
       const diaEndA = { x: 1, y: 1 };
       const diaEndB = { x: 2, y: 3 };
       assert.isFalse(rectangle.isEqualTo({ diaEndA, diaEndB }));
+    });
+  });
+
+  describe("hasPoint", function() {
+    it("Should give true if point is on the line ", function() {
+      const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 2, y: 3 });
+      const point = new Point(2, 2);
+      assert.isTrue(rectangle.hasPoint(point));
+    });
+
+    it("Should give false if point is on the line ", function() {
+      const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 2, y: 3 });
+      const point = new Point(2, 4);
+      assert.isFalse(rectangle.hasPoint(point));
+    });
+
+    it("Should give true if point is one of the corner", function() {
+      const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 2, y: 3 });
+      const point = new Point(2, 3);
+      assert.isTrue(rectangle.hasPoint(point));
+    });
+
+    it("Should give false if point is not instance of point", function() {
+      const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 2, y: 3 });
+      const point = { x: 2, y: 3 };
+      assert.isFalse(rectangle.hasPoint(point));
     });
   });
 });
