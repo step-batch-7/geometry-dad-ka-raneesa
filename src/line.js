@@ -52,8 +52,7 @@ class Line {
   get slope() {
     const dx = this.endB.x - this.endA.x;
     const dy = this.endB.y - this.endA.y;
-    const slopeOfLine = dy / dx;
-    return slopeOfLine == -Infinity ? Infinity : slopeOfLine;
+    return dy / dx;
   }
 
   isParallelTo(other) {
@@ -96,7 +95,7 @@ class Line {
   }
 
   findPointFromStart(distance) {
-    if (!Number.isInteger(distance)) return null;
+    console.log(distance);
     const { endA, endB } = this;
     const ratioOfDist = distance / this.length;
     if (isNotInRange([1, 0], ratioOfDist)) return null;
@@ -105,7 +104,7 @@ class Line {
   }
 
   findPointFromEnd(distance) {
-    if (!Number.isInteger(distance)) return null;
+    console.log(this.length);
     return this.findPointFromStart(this.length - distance);
   }
 }

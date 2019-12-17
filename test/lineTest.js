@@ -88,7 +88,7 @@ describe("Line", function() {
       const endA = { x: 1, y: 5 };
       const endB = { x: 1, y: 0 };
       const line = new Line(endA, endB);
-      const expected = Infinity;
+      const expected = -Infinity;
       assert.strictEqual(line.slope, expected);
     });
 
@@ -298,12 +298,6 @@ describe("Line", function() {
       assert.isNull(line.findPointFromStart(12));
     });
 
-    it("should give undefined when the distance is not a number", () => {
-      const line = new Line({ x: 0, y: 0 }, { x: -6, y: -8 });
-      const pointInDistance = line.findPointFromStart("5");
-      assert.isNull(pointInDistance);
-    });
-
     it("should give null for there is no given distance is negative", function() {
       const line = new Line({ x: 2, y: 4 }, { x: 2, y: 8 });
       assert.isNull(line.findPointFromStart(-1));
@@ -336,15 +330,16 @@ describe("Line", function() {
       assert.isNull(line.findPointFromEnd(12));
     });
 
-    it("should give undefined when the distance is not a number", () => {
-      const line = new Line({ x: 0, y: 0 }, { x: -6, y: -8 });
-      const pointInDistance = line.findPointFromEnd("4");
-      assert.isNull(pointInDistance);
-    });
-
     it("should give null for there is no given distance is negative", function() {
       const line = new Line({ x: 2, y: 4 }, { x: 2, y: 8 });
       assert.isNull(line.findPointFromEnd(-1));
+    });
+
+    it("should return end Point if distance is Zero", function() {
+      const line = new Line({ x: 3, y: 4 }, { x: 7, y: 2 });
+      const actual = line.findPointFromEnd(0);
+      const expected = new Point(7, 2);
+      assert.deepStrictEqual(actual, expected);
     });
   });
 });
