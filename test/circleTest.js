@@ -88,15 +88,9 @@ describe("Circle", function() {
   });
 
   describe("covers", () => {
-    it("should validate a point that is inside the circle and on the x axis", () => {
+    it("should validate a point that is inside the circle", () => {
       const circle = new Circle({ x: 0, y: 0 }, 5);
       const point = new Point(4, 0);
-      assert.isTrue(circle.covers(point));
-    });
-
-    it("should validate a point that is inside the circle and on the y axis", () => {
-      const circle = new Circle({ x: 0, y: 0 }, 5);
-      const point = new Point(0, 4);
       assert.isTrue(circle.covers(point));
     });
 
@@ -105,7 +99,7 @@ describe("Circle", function() {
       const point = new Point(0, 5);
       assert.isFalse(circle.covers(point));
     });
-    
+
     it("should invalidate a point that is not an instance of class Point", () => {
       const circle = new Circle({ x: 0, y: 0 }, 5);
       const point = { x: 0, y: 5 };
