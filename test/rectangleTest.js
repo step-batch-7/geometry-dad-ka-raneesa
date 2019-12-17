@@ -84,4 +84,30 @@ describe("Rectangle", function() {
       assert.isFalse(rectangle.hasPoint(point));
     });
   });
+
+  describe("covers", () => {
+    it("should validate a point that is on the sides", () => {
+      const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 2, y: 3 });
+      const point = new Point(1, 1);
+      assert.isFalse(rectangle.covers(point));
+    });
+
+    it("should validate a point that is inside the circle", () => {
+      const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 2, y: 3 });
+      const point = new Point(1.5, 2);
+      assert.isTrue(rectangle.covers(point));
+    });
+
+    it("should invalidate a point that is not inside the circle", () => {
+      const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 2, y: 3 });
+      const point = new Point(0, 6);
+      assert.isFalse(rectangle.covers(point));
+    });
+
+    it("should invalidate a point that is not an instance of class Point", () => {
+      const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 2, y: 3 });
+      const point = { x: 0, y: 5 };
+      assert.isFalse(rectangle.covers(point));
+    });
+  });
 });

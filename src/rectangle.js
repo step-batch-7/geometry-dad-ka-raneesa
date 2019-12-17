@@ -3,6 +3,12 @@
 const Point = require("./point.js");
 const Line = require("./line.js");
 
+const isInRange = (range, coordinate) => {
+  const min = Math.min(range[0], range[1]);
+  const max = Math.max(range[0], range[1]);
+  return coordinate > min && coordinate < max;
+};
+
 const getPointBandD = function(pointA, pointC) {
   return {
     pointB: new Point(pointA.x, pointC.y),
@@ -58,6 +64,14 @@ class Rectangle {
       side2.hasPoint(other) ||
       side3.hasPoint(other) ||
       side4.hasPoint(other)
+    );
+  }
+
+  covers(other) {
+    if (!(other instanceof Point)) return false;
+    return (
+      isInRange([this.pointA.x, this.pointC.x], other.x) &&
+      isInRange([this.pointA.y, this.pointC.y], other.y)
     );
   }
 }
