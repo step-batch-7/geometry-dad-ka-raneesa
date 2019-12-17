@@ -52,7 +52,8 @@ class Line {
   get slope() {
     const dx = this.endB.x - this.endA.x;
     const dy = this.endB.y - this.endA.y;
-    return dy / dx;
+    const slopeOfLine = dy / dx;
+    return slopeOfLine == -Infinity ? Infinity : slopeOfLine;
   }
 
   isParallelTo(other) {
