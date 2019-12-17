@@ -14,14 +14,14 @@ describe("Rectangle", function() {
   describe("area", function() {
     it("Should give area of a rectangle", function() {
       const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 2, y: 3 });
-      assert.strictEqual(rectangle.area, 4);
+      assert.strictEqual(rectangle.area, 0);
     });
   });
 
   describe("perimeter", function() {
     it("Should give perimeter of a rectangle", function() {
       const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 2, y: 3 });
-      assert.strictEqual(rectangle.perimeter, 8);
+      assert.strictEqual(rectangle.perimeter, 4);
     });
   });
 
