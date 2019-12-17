@@ -35,6 +35,17 @@ describe("Line", function() {
       };
       assert.isFalse(line1.isEqualTo(line2));
     });
+
+    it("should validate when start of one line is equal to end of other line and vise versa", () => {
+      const line = new Line({ x: 10, y: 11 }, { x: 12, y: 13 });
+      const otherLine = new Line({ x: 12, y: 13 }, { x: 10, y: 11 });
+      assert.isTrue(line.isEqualTo(otherLine));
+    });
+
+    it("should validate when the reference of both the lines are same", () => {
+      const line = new Line({ x: 0, y: 0 }, { x: 1, y: 1 });
+      assert.isTrue(line.isEqualTo(line));
+    });
   });
 
   describe("length", function() {

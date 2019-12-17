@@ -34,7 +34,10 @@ class Line {
 
   isEqualTo(other) {
     if (!(other instanceof Line)) return false;
-    return this.endA.isEqualTo(other.endA) && this.endB.isEqualTo(other.endB);
+    return (
+      (this.endA.isEqualTo(other.endA) || this.endA.isEqualTo(other.endB)) &&
+      (this.endB.isEqualTo(other.endB) || this.endB.isEqualTo(other.endA))
+    );
   }
 
   get length() {
