@@ -1,37 +1,37 @@
 "use strict";
 
-const Point = require("./point");
+const Line = require("./line");
+
+const getSides = function(diagonal) {
+  const { endA, endB } = diagonal;
+  const side1 = new Line(endA, { x: endA.x, y: endB.y });
+  const side2 = new Line(endB, { x: endB.x, y: endA.y });
+  return [side1, side2];
+};
 
 class Rectangle {
-  constructor(diaEndA, diaEndB) {
-    this.diaEndA = new Point(diaEndA.x, diaEndA.y);
-    this.diaEndB = new Point(diaEndB.x, diaEndB.y);
+  constructor(endA, endB) {
+    this.diagonal = new Line(endA, endB);
   }
 
   toString() {
-    return `[Rectangle (${this.diaEndA.x},${this.diaEndA.y}) to (${this.diaEndB.x},${this.diaEndB.y})]`;
+    const { endA, endB } = this.diagonal;
+    return `[Rectangle (${endA.x},${endA.y}) to (${endB.x},${endB.y})]`;
   }
 
-  area() {
-    const length = this.diaEndA.x - this.diaEndB.x;
-    const breadth = this.diaEndA.y - this.diaEndB.x;
-    return Math.abs(length) * Math.abs(breadth);
+  get area() {
+    const [side1, side2] = getSides(this.diagonal);
+    return side1.length * side2.length;
   }
 
-  perimeter() {
-    const length = this.diaEndA.x - this.diaEndB.x;
-    const breadth = this.diaEndA.y - this.diaEndB.x;
-    return 2 * (Math.abs(length) + Math.abs(breadth));
+  get perimeter() {
+    const [side1, side2] = getSides(this.diagonal);
+    return 2 * (side1.length + side2.length);
   }
 
   isEqualTo(other) {
     if (!(other instanceof Rectangle)) return false;
-    return (
-      (this.diaEndA.isEqualTo(other.diaEndA) &&
-        this.diaEndB.isEqualTo(other.diaEndB)) ||
-      (this.diaEndA.isEqualTo(other.diaEndB) &&
-        this.diaEndB.isEqualTo(other.diaEndA))
-    );
+    return this.diagonal.isEqualTo(other.diagonal);
   }
 }
 
