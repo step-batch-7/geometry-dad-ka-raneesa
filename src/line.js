@@ -6,8 +6,13 @@ const getMidPoint = function(endA, endB) {
   return { x: midOfXs, y: midOfYs };
 };
 
-const findIntercept = function(x, y, slope) {
-  return y - slope * x;
+const arePointsCollinear = (point1, point2, point3) => {
+  return (
+    point1.x * (point2.y - point3.y) +
+      point2.x * (point3.y - point1.y) +
+      point3.x * (point1.y - point2.y) ==
+    0
+  );
 };
 
 const isNotInRange = (range, coordinate) => {
@@ -51,19 +56,10 @@ class Line {
   }
 
   isParallelTo(other) {
-    if (!(other instanceof Line) || this.isEqualTo(other)) return false;
-    const yInterceptOfOtherLine = findIntercept(
-      other.endA.x,
-      other.endA.y,
-      other.slope
-    );
-    const yInterceptOfThisLine = findIntercept(
-      this.endA.x,
-      this.endA.y,
-      this.slope
-    );
+    if (!(other instanceof Line)) return false;
     return (
-      yInterceptOfOtherLine != yInterceptOfThisLine && other.slope == this.slope
+      !arePointsCollinear(this.endA, other.endA, this.endB) &&
+      this.slope === other.slope
     );
   }
 
