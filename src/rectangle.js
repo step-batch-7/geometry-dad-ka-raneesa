@@ -3,13 +3,19 @@
 const Point = require("./point");
 
 class Rectangle {
-  constructor(diaP1, diaP2) {
-    this.diaP1 = new Point(diaP1.x, diaP1.y);
-    this.diaP2 = new Point(diaP2.x, diaP2.y);
+  constructor(diaEndA, diaEndB) {
+    this.diaEndA = new Point(diaEndA.x, diaEndA.y);
+    this.diaEndB = new Point(diaEndB.x, diaEndB.y);
   }
 
   toString() {
-    return `[Rectangle (${this.diaP1.x},${this.diaP1.y}) to (${this.diaP2.x},${this.diaP2.y})]`;
+    return `[Rectangle (${this.diaEndA.x},${this.diaEndA.y}) to (${this.diaEndB.x},${this.diaEndB.y})]`;
+  }
+
+  area() {
+    const length = this.diaEndA.x - this.diaEndB.x;
+    const breadth = this.diaEndA.y - this.diaEndB.x;
+    return length * breadth;
   }
 }
 
