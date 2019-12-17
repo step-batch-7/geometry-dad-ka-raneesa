@@ -68,7 +68,7 @@ describe("Circle", function() {
       assert.isTrue(circle.hasPoint(new Point(5, 7)));
     });
 
-    it("Should give false if point is on the circle", function() {
+    it("Should give false if point is not on the circle", function() {
       const circle = new Circle({ x: 5, y: 5 }, 2);
       assert.isFalse(circle.hasPoint(new Point(5, 6)));
     });

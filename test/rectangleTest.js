@@ -39,7 +39,13 @@ describe("Rectangle", function() {
       assert.isTrue(rectangle1.isEqualTo(rectangle2));
     });
 
-    it("Should give false if both rectangles are on same coordinates but in reverse order", function() {
+    it("Should give true if diagonals are distinct but are of same rectangle", function() {
+      const rectangle1 = new Rectangle({ x: 1, y: 1 }, { x: 2, y: 3 });
+      const rectangle2 = new Rectangle({ x: 1, y: 3 }, { x: 2, y: 1 });
+      assert.isTrue(rectangle1.isEqualTo(rectangle2));
+    });
+
+    it("Should give false if both rectangles are distinct coordinates", function() {
       const rectangle1 = new Rectangle({ x: 1, y: 1 }, { x: 2, y: 3 });
       const rectangle2 = new Rectangle({ x: 2, y: 4 }, { x: 2, y: 1 });
       assert.isFalse(rectangle1.isEqualTo(rectangle2));
