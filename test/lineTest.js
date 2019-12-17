@@ -261,26 +261,78 @@ describe("Line", function() {
   });
 
   describe("findPointFromStart", function() {
+    it("should give a point on the line in given distance in the forward direction when point is in x axis", () => {
+      const line = new Line({ x: 0, y: 0 }, { x: 5, y: 0 });
+      const point = new Point(2, 0);
+      const pointInDistance = line.findPointFromStart(2);
+      assert.isTrue(point.isEqualTo(pointInDistance));
+    });
+
+    it("should give a point on the line in given distance in the forward direction when point is in y axis", () => {
+      const line = new Line({ x: 0, y: 0 }, { x: 0, y: 5 });
+      const point = new Point(0, 2);
+      const pointInDistance = line.findPointFromStart(2);
+      assert.isTrue(point.isEqualTo(pointInDistance));
+    });
+
     it("should give the point of the certain distance from the start of the line if it exists on the line segment", function() {
       const line = new Line({ x: 1, y: 2 }, { x: 4, y: 2 });
       const point = new Point(3, 2);
       assert.deepStrictEqual(line.findPointFromStart(2), point);
     });
+
     it("should give null if the distance is greater than the line distance", function() {
       const line = new Line({ x: 1, y: 6 }, { x: 4, y: 6 });
       assert.isNull(line.findPointFromStart(12));
     });
+
+    it("should give undefined when the distance is not a number", () => {
+      const line = new Line({ x: 0, y: 0 }, { x: -6, y: -8 });
+      const pointInDistance = line.findPointFromStart("5");
+      assert.isUndefined(pointInDistance);
+    });
+
+    it("should give null for there is no given distance is negative", function() {
+      const line = new Line({ x: 2, y: 4 }, { x: 2, y: 8 });
+      assert.isNull(line.findPointFromStart(-1));
+    });
   });
 
   describe("findPointFromEnd", function() {
+    it("should give a point on the line in given distance in the forward direction when point is in x axis", () => {
+      const line = new Line({ x: 5, y: 0 }, { x: 0, y: 0 });
+      const point = new Point(2, 0);
+      const pointInDistance = line.findPointFromEnd(2);
+      assert.isTrue(point.isEqualTo(pointInDistance));
+    });
+
+    it("should give a point on the line in given distance in the forward direction when point is in y axis", () => {
+      const line = new Line({ x: 0, y: 5 }, { x: 0, y: 0 });
+      const point = new Point(0, 2);
+      const pointInDistance = line.findPointFromEnd(2);
+      assert.isTrue(point.isEqualTo(pointInDistance));
+    });
+
     it("should give the point of the certain distance from the start of the line if it exists on the line segment", function() {
       const line = new Line({ x: 1, y: 2 }, { x: 5, y: 2 });
       const point = new Point(4, 2);
       assert.deepStrictEqual(line.findPointFromEnd(1), point);
     });
+
     it("should give null if the distance is greater than the line distance", function() {
       const line = new Line({ x: 1, y: 6 }, { x: 4, y: 6 });
       assert.isNull(line.findPointFromEnd(12));
+    });
+
+    it("should give undefined when the distance is not a number", () => {
+      const line = new Line({ x: 0, y: 0 }, { x: -6, y: -8 });
+      const pointInDistance = line.findPointFromEnd("4");
+      assert.isUndefined(pointInDistance);
+    });
+
+    it("should give null for there is no given distance is negative", function() {
+      const line = new Line({ x: 2, y: 4 }, { x: 2, y: 8 });
+      assert.isNull(line.findPointFromEnd(-1));
     });
   });
 });

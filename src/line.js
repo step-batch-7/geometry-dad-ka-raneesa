@@ -95,6 +95,7 @@ class Line {
   }
 
   findPointFromStart(distance) {
+    if (!Number.isInteger(distance)) return undefined;
     const { endA, endB } = this;
     const ratioOfDist = distance / this.length;
     if (isNotInRange([1, 0], ratioOfDist)) return null;
@@ -103,6 +104,7 @@ class Line {
   }
 
   findPointFromEnd(distance) {
+    if (!Number.isInteger(distance)) return undefined;
     return this.findPointFromStart(this.length - distance);
   }
 }

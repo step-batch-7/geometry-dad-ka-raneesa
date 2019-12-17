@@ -16,9 +16,7 @@ class Point {
 
   isEqualTo(other) {
     if (!(other instanceof Point)) return false;
-    const areXsEqual = this.x == other.x;
-    const areYsEqual = this.y == other.y;
-    return areXsEqual && areYsEqual;
+    return this.x == other.x && this.y == other.y;
   }
 
   clone() {
