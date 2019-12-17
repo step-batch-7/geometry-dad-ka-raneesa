@@ -143,6 +143,18 @@ describe("Line", function() {
       const line = new Line({ x: 0, y: 0 }, { x: 1, y: 0 });
       assert.isFalse(line.isParallelTo(line));
     });
+
+    it("should determine false for lines overlapping", function() {
+      let line1 = new Line({ x: 0, y: 0 }, { x: 4, y: 0 });
+      let line2 = new Line({ x: 1, y: 0 }, { x: 3, y: 0 });
+      assert.isNotOk(line1.isParallelTo(line2));
+    });
+
+    it("should determine false for 2 different type of lines.", function() {
+      const line1 = new Line({ x: 0, y: -2 }, { x: -1, y: 4 });
+      const line2 = { endA: { x: 0, y: -2 }, endB: { x: -1, y: 4 } };
+      assert.isNotOk(line1.isParallelTo(line2));
+    });
   });
 
   describe("findX", function() {

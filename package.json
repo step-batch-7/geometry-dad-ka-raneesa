@@ -7,8 +7,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "nyc mocha",
-    "alltests": "nyc mocha"
+    "test": "mocha",
+    "cover": "nyc mocha",
+    "coverage": "nyc --reporter=html npm test && open coverage/index.html"
   },
   "repository": {
     "type": "git",

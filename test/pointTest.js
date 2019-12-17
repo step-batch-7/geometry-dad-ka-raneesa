@@ -108,5 +108,11 @@ describe("Point", function() {
       const circle = new Circle({ x: 5, y: 5 }, 2);
       assert.isFalse(point.isOn(circle));
     });
+
+    it("should validate a point that is parallel to y axis and given a point on the line", () => {
+      const line = new Line({ x: 5, y: 0 }, { x: 5, y: 10 });
+      const point = new Point(5, 5);
+      assert.isTrue(point.isOn(line));
+    });
   });
 });
