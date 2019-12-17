@@ -301,7 +301,7 @@ describe("Line", function() {
     it("should give undefined when the distance is not a number", () => {
       const line = new Line({ x: 0, y: 0 }, { x: -6, y: -8 });
       const pointInDistance = line.findPointFromStart("5");
-      assert.isUndefined(pointInDistance);
+      assert.isNull(pointInDistance);
     });
 
     it("should give null for there is no given distance is negative", function() {
@@ -339,7 +339,7 @@ describe("Line", function() {
     it("should give undefined when the distance is not a number", () => {
       const line = new Line({ x: 0, y: 0 }, { x: -6, y: -8 });
       const pointInDistance = line.findPointFromEnd("4");
-      assert.isUndefined(pointInDistance);
+      assert.isNull(pointInDistance);
     });
 
     it("should give null for there is no given distance is negative", function() {
