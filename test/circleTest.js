@@ -78,4 +78,12 @@ describe("Circle", function() {
       assert.isFalse(circle.hasPoint({ x: 5, y: 7 }));
     });
   });
+
+  describe("moveTo", function() {
+    it("Should give a new circle of same dimensions at that center", function() {
+      const circle = new Circle({ x: 5, y: 5 }, 5);
+      const expected = new Circle({ x: 2, y: 3 }, 5);
+      assert.deepStrictEqual(circle.moveTo({ x: 2, y: 3 }), expected);
+    });
+  });
 });

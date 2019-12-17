@@ -88,7 +88,7 @@ describe("Line", function() {
       const endA = { x: 1, y: 5 };
       const endB = { x: 1, y: 0 };
       const line = new Line(endA, endB);
-      const expected = Infinity;
+      const expected = -Infinity;
       assert.strictEqual(line.slope, expected);
     });
 
