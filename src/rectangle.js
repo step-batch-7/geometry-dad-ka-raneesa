@@ -23,6 +23,16 @@ class Rectangle {
     const breadth = this.diaEndA.y - this.diaEndB.x;
     return 2 * (Math.abs(length) + Math.abs(breadth));
   }
+
+  isEqualTo(other) {
+    if (!(other instanceof Rectangle)) return false;
+    return (
+      (this.diaEndA.isEqualTo(other.diaEndA) &&
+        this.diaEndB.isEqualTo(other.diaEndB)) ||
+      (this.diaEndA.isEqualTo(other.diaEndB) &&
+        this.diaEndB.isEqualTo(other.diaEndA))
+    );
+  }
 }
 
 module.exports = Rectangle;
