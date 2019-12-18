@@ -56,6 +56,8 @@ class Line {
 
   isParallelTo(other) {
     if (!(other instanceof Line)) return false;
+    if (Math.abs(this.slope) == Infinity && Math.abs(other.slope) == Infinity)
+      return true;
     return (
       !arePointsCollinear(this.endA, other.endA, this.endB) &&
       this.slope === other.slope
@@ -98,6 +100,7 @@ class Line {
     const ratioOfDist = distance / this.length;
     if (isNotInRange([1, 0], ratioOfDist)) return null;
     const [x, y] = getPointCoordinates(ratioOfDist, endA, endB);
+    if (isNaN(x) || isNaN(y)) return null;
     return new Point(x, y);
   }
 
