@@ -55,13 +55,14 @@ class Line {
   }
 
   isParallelTo(other) {
-    if (!(other instanceof Line)) return false;
+    if (
+      !(other instanceof Line) ||
+      arePointsCollinear(this.endA, other.endA, this.endB)
+    )
+      return false;
     if (Math.abs(this.slope) == Infinity && Math.abs(other.slope) == Infinity)
       return true;
-    return (
-      !arePointsCollinear(this.endA, other.endA, this.endB) &&
-      this.slope === other.slope
-    );
+    return this.slope === other.slope;
   }
 
   findX(y) {
