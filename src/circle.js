@@ -30,10 +30,8 @@ class Circle {
     return this.centre.findDistanceTo(other) == this.radius;
   }
 
-  moveTo(object) {
-    const centre = { x: object.x, y: object.y };
-    const radius = this.radius;
-    return new Circle(centre, radius);
+  moveTo(centre) {
+    return new Circle(centre, this.radius);
   }
 
   covers(point) {
