@@ -15,10 +15,9 @@ const arePointsCollinear = (point1, point2, point3) => {
   );
 };
 
-const isNotInRange = (range, coordinate) => {
-  const min = Math.min(range[0], range[1]);
-  const max = Math.max(range[0], range[1]);
-  return coordinate < min || coordinate > max;
+const isNotInRange = (range, number) => {
+  const [min, max] = range.sort((a, b) => a - b);
+  return number > max || number < min;
 };
 
 const getPointCoordinates = function(ratio, p1, p2) {
@@ -74,7 +73,7 @@ class Line {
 
   findY(x) {
     const { endA, endB } = this;
-    if (isNotInRange([endA.x, endB.x, x], x)) return NaN;
+    if (isNotInRange([endA.x, endB.x], x)) return NaN;
     if (endA.x == endB.x || endA.y == endB.y) return endA.y;
     const dx = x - endA.x;
     const product = this.slope * dx;

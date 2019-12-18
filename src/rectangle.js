@@ -3,10 +3,9 @@
 const Point = require("./point.js");
 const Line = require("./line.js");
 
-const isInRange = (range, coordinate) => {
-  const min = Math.min(range[0], range[1]);
-  const max = Math.max(range[0], range[1]);
-  return coordinate > min && coordinate < max;
+const isInRange = (range, number) => {
+  const [min, max] = range.sort((a, b) => a - b);
+  return number < max && number > min;
 };
 
 const getPointBandD = function(pointA, pointC) {
