@@ -17,12 +17,42 @@ describe("Rectangle", function() {
       const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 2, y: 3 });
       assert.strictEqual(rectangle.area, 2);
     });
+
+    it("should give zero for diagonal length is zero", function() {
+      const rectangle = new Rectangle({ x: 0, y: 0 }, { x: 0, y: 0 });
+      assert.strictEqual(rectangle.area, 0);
+    });
+
+    it("should give zero for breadth is zero", function() {
+      const rectangle = new Rectangle({ x: 0, y: 0 }, { x: 0, y: 5 });
+      assert.strictEqual(rectangle.area, 0);
+    });
+
+    it("should give zero for length is zero", function() {
+      const rectangle = new Rectangle({ x: 0, y: 0 }, { x: 5, y: 0 });
+      assert.strictEqual(rectangle.area, 0);
+    });
   });
 
   describe("perimeter", function() {
     it("Should give perimeter of a rectangle", function() {
       const rectangle = new Rectangle({ x: 1, y: 1 }, { x: 2, y: 3 });
       assert.strictEqual(rectangle.perimeter, 6);
+    });
+
+    it("should give zero for diagonal length is zero", function() {
+      const rectangle = new Rectangle({ x: 0, y: 0 }, { x: 0, y: 0 });
+      assert.strictEqual(rectangle.perimeter, 0);
+    });
+
+    it("should give perimeter as two time of length for breadth is zero", function() {
+      const rectangle = new Rectangle({ x: 0, y: 0 }, { x: 0, y: 5 });
+      assert.strictEqual(rectangle.perimeter, 10);
+    });
+
+    it("should give perimeter as two time of breadth for length is zero", function() {
+      const rectangle = new Rectangle({ x: 0, y: 0 }, { x: 5, y: 0 });
+      assert.strictEqual(rectangle.perimeter, 10);
     });
   });
 
